@@ -1,11 +1,29 @@
-function Card() {
+import { useDispatch } from 'react-redux';
+import { isnt_done_todo, is_done_todo } from 'redux/modules/todoList';
+
+function Card({ todo }) {
+  const dispatch = useDispatch();
+
+  console.log(todo);
   return (
     <>
       <article>
-        <h1>리액트 공부하기</h1>
-        <p>리액트 기초를 공부해봅시다.</p>
-        <button>삭제하기</button>
-        <button>완료</button>
+        <h1>{todo.title}</h1>
+        <p>{todo.body}</p>
+        <button
+          onClick={() => {
+            dispatch(isnt_done_todo(todo.id - 1));
+          }}
+        >
+          삭제하기
+        </button>
+        <button
+          onClick={() => {
+            dispatch(is_done_todo(todo.id - 1));
+          }}
+        >
+          완료
+        </button>
       </article>
     </>
   );

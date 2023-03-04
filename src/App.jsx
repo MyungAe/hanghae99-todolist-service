@@ -3,8 +3,6 @@ import Form from 'components/Form';
 import TodoList from 'components/TodoList';
 
 function App() {
-  // const makeTodo = useSelector(state => state.makeTodo);
-
   return (
     <>
       <Header />
