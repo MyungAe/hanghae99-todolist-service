@@ -3,8 +3,6 @@ import { isnt_done_todo, is_done_todo } from 'redux/modules/todoList';
 
 function Card({ todo }) {
   const dispatch = useDispatch();
-
-  console.log(todo);
   return (
     <>
       <article>
