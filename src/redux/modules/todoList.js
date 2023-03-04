@@ -50,19 +50,24 @@ export const isnt_done_todo = id => {
   };
 };
 
+let currentId = 4;
+
 const todoListReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
-      return state;
+      const { title, content } = action.payload;
+      const newTodoObject = {
+        id: ++currentId,
+        title,
+        body: content,
+        isDone: false,
+      };
+      return [...state, newTodoObject];
     case IS_DONE_TODO:
       state[action.payload]['isDone'] = true;
-      //   console.log(action.payload, state[action.payload]);
-      //   console.log(state);
       return [...state];
     case ISNT_DONE_TODO:
       state[action.payload]['isDone'] = false;
-      //   console.log(action.payload, state[action.payload]);
-      //   console.log(state);
       return [...state];
     default:
       return state;
