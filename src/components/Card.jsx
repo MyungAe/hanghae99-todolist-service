@@ -1,12 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { isnt_done_todo, is_done_todo } from 'redux/modules/todoList';
+import Detail from './Detail';
 
 function Card({ todo }) {
   const dispatch = useDispatch();
   return (
     <>
       <article>
-        <h1>{todo.title}</h1>
+        <h2>{todo.title}</h2>
         <p>{todo.body}</p>
         <button
           onClick={() => {
@@ -23,6 +24,7 @@ function Card({ todo }) {
           완료
         </button>
       </article>
+      <Detail todo={todo} />
     </>
   );
 }

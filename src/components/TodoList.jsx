@@ -24,14 +24,15 @@ function TodoList() {
         return (
           <section key={title}>
             {title}
-            {todo.map(todoObject => {
-              return (
-                <Card
-                  key={todoObject.id}
-                  todo={todoObject}
-                />
-              );
-            })}
+            <ul>
+              {todo.map(todoObject => {
+                return (
+                  <li key={todoObject.id}>
+                    <Card todo={todoObject} />
+                  </li>
+                );
+              })}
+            </ul>
           </section>
         );
       })}
