@@ -30,8 +30,8 @@ const initialState = {
 };
 
 const ADD_TODO = 'ADD_TODO';
-const IS_DONE_TODO = 'IS_DONE_TODO';
-const ISNT_DONE_TODO = 'ISNT_DONE_TODO';
+const TOGGLE_TODO = 'TOGGLE_TODO';
+const DELETE_TODO = 'DELETE_TODO';
 const SET_CURRENT_TODO = 'TODO_IS_THIS';
 
 export const add_todo = payload => {
@@ -41,16 +41,16 @@ export const add_todo = payload => {
   };
 };
 
-export const is_done_todo = id => {
+export const toggle_todo = id => {
   return {
-    type: IS_DONE_TODO,
+    type: TOGGLE_TODO,
     payload: id,
   };
 };
 
-export const isnt_done_todo = id => {
+export const delete_todo = id => {
   return {
-    type: ISNT_DONE_TODO,
+    type: DELETE_TODO,
     payload: id,
   };
 };
@@ -63,28 +63,34 @@ export const set_current_todo = id => {
 };
 
 const todoListReducer = (state = initialState, action) => {
+  let todoLists = state['todoLists'];
+  let currentTodoLength = state['currentTodoLength'];
+
   switch (action.type) {
     case ADD_TODO:
       const { title, content } = action.payload;
       const newTodoObject = {
-        id: ++state.currentTodoLength,
+        id: ++currentTodoLength,
         title,
         body: content,
         isDone: false,
       };
-      return Object.assign(state, {
-        todolists: [...state.todoLists, newTodoObject],
+      return {
+        ...state,
+        todoLists: [...todoLists, newTodoObject],
+        currentTodoLength: currentTodoLength,
+      };
+    case TOGGLE_TODO:
+      const index = action.payload;
+      todoLists[index]['isDone'] = !todoLists[index]['isDone'];
+      return { ...state };
+    case DELETE_TODO:
+      todoLists = todoLists.filter(object => {
+        return object['id'] !== action.payload;
       });
-    case IS_DONE_TODO:
-      state['todoLists'][action.payload]['isDone'] = true;
-      return Object.assign(state);
-    case ISNT_DONE_TODO:
-      state['todoLists'][action.payload]['isDone'] = false;
-      return Object.assign(state);
+      return { ...state, todoLists };
     case SET_CURRENT_TODO:
-      return Object.assign(state, {
-        currentTodoObject: state.todoLists[action.payload],
-      });
+      return { ...state, currentTodoObject: state.todoLists[action.payload] };
     default:
       return state;
   }

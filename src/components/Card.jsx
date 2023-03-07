@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import {
-  isnt_done_todo,
-  is_done_todo,
+  delete_todo,
+  toggle_todo,
   set_current_todo,
 } from 'redux/modules/todoList';
 
@@ -14,17 +14,17 @@ function Card({ children }) {
         <p>{children.body}</p>
         <button
           onClick={() => {
-            dispatch(isnt_done_todo(children.id - 1));
+            dispatch(delete_todo(children.id));
           }}
         >
           삭제하기
         </button>
         <button
           onClick={() => {
-            dispatch(is_done_todo(children.id - 1));
+            dispatch(toggle_todo(children.id - 1));
           }}
         >
-          완료
+          {children.isDone ? '취소' : '완료'}
         </button>
       </article>
       <button
