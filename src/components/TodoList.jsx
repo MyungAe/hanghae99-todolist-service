@@ -5,7 +5,7 @@ import filterTodoList from 'utils/filterTodoList';
 function TodoList() {
   const todoList = useSelector(state => state.todoList);
 
-  const { isDoneArray, isntDoneArray } = filterTodoList(todoList);
+  const { isDoneArray, isntDoneArray } = filterTodoList(todoList.todoLists);
 
   const renderTarget = [
     {
@@ -28,7 +28,7 @@ function TodoList() {
               {todo.map(todoObject => {
                 return (
                   <li key={todoObject.id}>
-                    <Card todo={todoObject} />
+                    <Card>{todoObject}</Card>
                   </li>
                 );
               })}
