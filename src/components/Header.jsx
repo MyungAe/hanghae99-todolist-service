@@ -1,9 +1,11 @@
+import { HeaderComponent } from 'styles/Header.styled';
+
 function Header() {
   return (
-    <header>
+    <HeaderComponent>
       <h1>My Todo List</h1>
       <p>React</p>
-    </header>
+    </HeaderComponent>
   );
 }
 

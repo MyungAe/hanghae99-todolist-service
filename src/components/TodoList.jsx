@@ -1,6 +1,7 @@
 import Card from './Card';
 import { useSelector } from 'react-redux';
 import filterTodoList from 'utils/filterTodoList';
+import { TodoListComponent, TodoListUl } from 'styles/TodoList.styled';
 
 function TodoList() {
   const todoList = useSelector(state => state.todoList);
@@ -22,9 +23,9 @@ function TodoList() {
     <>
       {renderTarget.map(({ title, todo }) => {
         return (
-          <section key={title}>
-            {title}
-            <ul>
+          <TodoListComponent key={title}>
+            <h2>{title}</h2>
+            <TodoListUl>
               {todo.map(todoObject => {
                 return (
                   <li key={todoObject.id}>
@@ -32,8 +33,8 @@ function TodoList() {
                   </li>
                 );
               })}
-            </ul>
-          </section>
+            </TodoListUl>
+          </TodoListComponent>
         );
       })}
     </>
