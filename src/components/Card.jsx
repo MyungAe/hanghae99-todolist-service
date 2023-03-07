@@ -14,7 +14,7 @@ function Card({ children }) {
       <CardComponent>
         <Link
           onClick={() => {
-            dispatch(set_current_todo(children.id - 1));
+            dispatch(set_current_todo(children.id));
           }}
           to={`/detail/${children.id}`}
         >

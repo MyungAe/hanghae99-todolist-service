@@ -90,7 +90,10 @@ const todoListReducer = (state = initialState, action) => {
       });
       return { ...state, todoLists };
     case SET_CURRENT_TODO:
-      return { ...state, currentTodoObject: state.todoLists[action.payload] };
+      const findTodo = todoLists.filter(todo => {
+        return todo.id === action.payload;
+      });
+      return { ...state, currentTodoObject: findTodo[0] };
     default:
       return state;
   }
