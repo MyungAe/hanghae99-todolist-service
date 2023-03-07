@@ -11,6 +11,11 @@ const GlobalStyle = createGlobalStyle`
         padding: 0px;
         border: 0;
     }
+    
+    a {
+        text-decoration: none;
+        color: black
+    }
 
     h1, h2 {
         font-weight: normal
