@@ -4,8 +4,6 @@
 
 ## To Do
 
-- [ ] react-router-dom을 이용해 라우터 구분하기
-
 ## Done
 
 ### 초기 설정하기
@@ -23,6 +21,7 @@
 - [x] todo 삭제 기능 구현
 - [x] todo의 isDone 값에 따라 상태 버튼이 '완료' 또는 '취소'로 보이도록 수정
 - [x] styled-components를 이용해 스타일 적용하기
+- [x] react-router-dom을 이용해 라우터 구분하기
 
 ### 리팩토링해보기
 
