@@ -15,7 +15,7 @@ function Detail() {
               <div>ID : {currentTodoObject.id}</div>
               <Link to="/">이전으로</Link>
             </header>
-            x<h2>{currentTodoObject.title}</h2>
+            <h2>{currentTodoObject.title}</h2>
             <p>{currentTodoObject.body}</p>
           </article>
         </DetailComponent>
