@@ -5,7 +5,6 @@
 ## To Do
 
 - [ ] react-router-dom을 이용해 라우터 구분하기
-- [ ] styled-components를 이용해 스타일 적용하기
 
 ## Done
 
@@ -23,6 +22,7 @@
 - [x] Card 컴포넌트는 props를 이용해 구현하고, Detail 컴포넌트를 id를 전달해 리덕스의 상태를 변경한 뒤 불러오도록 구현하기
 - [x] todo 삭제 기능 구현
 - [x] todo의 isDone 값에 따라 상태 버튼이 '완료' 또는 '취소'로 보이도록 수정
+- [x] styled-components를 이용해 스타일 적용하기
 
 ### 리팩토링해보기
 
