@@ -1,21 +1,28 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
-
-const DetailComponent = styled.article``;
+import { Link } from 'react-router-dom';
+import { DetailComponent } from 'styles/Detail.styled';
 
 function Detail() {
-  const currentTodo = useSelector(state => state.todoList);
+  const { currentTodoObject } = useSelector(state => state.todoList);
 
   return (
-    <DetailComponent>
-      <header>
-        <div>ID : {currentTodo.id}</div>
-        <button>이전으로</button>
-      </header>
-      <h2>{currentTodo.title}</h2>
-      <p>{currentTodo.body}</p>
-    </DetailComponent>
+    <>
+      {currentTodoObject ? (
+        <DetailComponent>
+          <article>
+            <header>
+              <div>ID : {currentTodoObject.id}</div>
+              <Link to="/">이전으로</Link>
+            </header>
+            x<h2>{currentTodoObject.title}</h2>
+            <p>{currentTodoObject.body}</p>
+          </article>
+        </DetailComponent>
+      ) : (
+        <div>잘못된 접근입니다.</div>
+      )}
+    </>
   );
 }
 

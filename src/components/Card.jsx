@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   delete_todo,
   toggle_todo,
@@ -11,14 +12,14 @@ function Card({ children }) {
   return (
     <>
       <CardComponent>
-        <button
+        <Link
           onClick={() => {
-            console.log('detail button clicked');
-            return dispatch(set_current_todo(children.id - 1));
+            dispatch(set_current_todo(children.id - 1));
           }}
+          to={`/detail/${children.id}`}
         >
           상세보기
-        </button>
+        </Link>
         <h2>{children.title}</h2>
         <p>{children.body}</p>
         <div>
